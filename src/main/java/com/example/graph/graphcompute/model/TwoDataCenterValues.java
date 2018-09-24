@@ -11,7 +11,6 @@ public class TwoDataCenterValues {
 	}
 
 	public TwoDataCenterValues(String dc1, String dc2, double latency, double bandwidth) {
-
 		this.dc1 = dc1;
 		this.dc2 = dc2;
 		this.latency = latency;

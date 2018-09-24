@@ -764,3 +764,327 @@ java.lang.IllegalStateException: Ambiguous handler methods mapped for HTTP path 
 2018-09-24 14:12:42.758  INFO 64648 --- [http-nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
 2018-09-24 14:12:42.758  INFO 64648 --- [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
 2018-09-24 14:12:42.812  INFO 64648 --- [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 52 ms
+2018-09-24 14:14:17.287  INFO 64648 --- [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2018-09-24 14:14:17.297  INFO 64648 --- [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2018-09-24 16:00:48.426  INFO 67347 --- [restartedMain] c.e.g.g.GraphComputeApplication          : Starting GraphComputeApplication on Dipeshs-MacBook-Pro.local with PID 67347 (started by Dipesh in /Users/Dipesh/OneDrive/Research Engineer/workspace/graph-compute)
+2018-09-24 16:00:48.432  INFO 67347 --- [restartedMain] c.e.g.g.GraphComputeApplication          : No active profile set, falling back to default profiles: default
+2018-09-24 16:00:48.500  INFO 67347 --- [restartedMain] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@13cc80b2: startup date [Mon Sep 24 16:00:48 CEST 2018]; root of context hierarchy
+2018-09-24 16:00:50.660  INFO 67347 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$f461d0cc] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-09-24 16:00:51.366  INFO 67347 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8090 (http)
+2018-09-24 16:00:51.408  INFO 67347 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-09-24 16:00:51.409  INFO 67347 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.32
+2018-09-24 16:00:51.419  INFO 67347 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/Dipesh/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+2018-09-24 16:00:51.526  INFO 67347 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-09-24 16:00:51.527  INFO 67347 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3027 ms
+2018-09-24 16:00:51.649  INFO 67347 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2018-09-24 16:00:51.656  INFO 67347 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-09-24 16:00:51.657  INFO 67347 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-09-24 16:00:51.658  INFO 67347 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-09-24 16:00:51.659  INFO 67347 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-09-24 16:00:51.900  INFO 67347 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2018-09-24 16:00:52.217  INFO 67347 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2018-09-24 16:00:52.290  INFO 67347 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2018-09-24 16:00:52.307  INFO 67347 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-09-24 16:00:52.523  INFO 67347 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate Core {5.2.17.Final}
+2018-09-24 16:00:52.527  INFO 67347 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2018-09-24 16:00:52.591  INFO 67347 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-09-24 16:00:52.775  INFO 67347 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2018-09-24 16:00:53.530  INFO 67347 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2018-09-24 16:00:54.352  INFO 67347 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-09-24 16:00:54.813  INFO 67347 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@13cc80b2: startup date [Mon Sep 24 16:00:48 CEST 2018]; root of context hierarchy
+2018-09-24 16:00:54.866  WARN 67347 --- [restartedMain] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2018-09-24 16:00:54.935  INFO 67347 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/input/dc/{dc}],methods=[GET]}" onto public com.example.graph.graphcompute.model.DataCent com.example.graph.graphcompute.controller.InputClusterZoneController.retrieveDataCenter(java.lang.String)
+2018-09-24 16:00:54.937  INFO 67347 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/input/zone/{zone}],methods=[GET]}" onto public com.example.graph.graphcompute.model.Zone com.example.graph.graphcompute.controller.InputClusterZoneController.retrieveZone(java.lang.String)
+2018-09-24 16:00:54.942  INFO 67347 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-09-24 16:00:54.943  INFO 67347 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-09-24 16:00:55.015  INFO 67347 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-09-24 16:00:55.015  INFO 67347 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-09-24 16:00:55.571  WARN 67347 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2018-09-24 16:00:55.637  INFO 67347 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2018-09-24 16:00:55.640  INFO 67347 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
+2018-09-24 16:00:55.650  INFO 67347 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=dataSource,type=HikariDataSource]
+2018-09-24 16:00:55.718  INFO 67347 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8090 (http) with context path ''
+2018-09-24 16:00:55.726  INFO 67347 --- [restartedMain] c.e.g.g.GraphComputeApplication          : Started GraphComputeApplication in 7.799 seconds (JVM running for 8.597)
+2018-09-24 16:22:45.554  INFO 67347 --- [restartedMain] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2018-09-24 16:23:00.521  INFO 67347 --- [RMI TCP Connection(2)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2018-09-24 16:23:00.522  INFO 67347 --- [RMI TCP Connection(2)-127.0.0.1] ConfigServletWebServerApplicationContext : Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@13cc80b2: startup date [Mon Sep 24 16:00:48 CEST 2018]; root of context hierarchy
+2018-09-24 16:23:00.533  INFO 67347 --- [RMI TCP Connection(2)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2018-09-24 16:23:00.541  INFO 67347 --- [RMI TCP Connection(2)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2018-09-24 16:23:27.242  INFO 67875 --- [restartedMain] c.e.g.g.GraphComputeApplication          : Starting GraphComputeApplication on Dipeshs-MacBook-Pro.local with PID 67875 (started by Dipesh in /Users/Dipesh/OneDrive/Research Engineer/workspace/graph-compute)
+2018-09-24 16:23:27.247  INFO 67875 --- [restartedMain] c.e.g.g.GraphComputeApplication          : No active profile set, falling back to default profiles: default
+2018-09-24 16:23:27.315  INFO 67875 --- [restartedMain] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@4fea8b55: startup date [Mon Sep 24 16:23:27 CEST 2018]; root of context hierarchy
+2018-09-24 16:23:29.899  INFO 67875 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$485be9c7] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-09-24 16:23:30.783  INFO 67875 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8090 (http)
+2018-09-24 16:23:30.838  INFO 67875 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-09-24 16:23:30.838  INFO 67875 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.32
+2018-09-24 16:23:30.848  INFO 67875 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/Dipesh/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+2018-09-24 16:23:30.984  INFO 67875 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-09-24 16:23:30.985  INFO 67875 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3669 ms
+2018-09-24 16:23:31.159  INFO 67875 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2018-09-24 16:23:31.169  INFO 67875 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-09-24 16:23:31.170  INFO 67875 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-09-24 16:23:31.170  INFO 67875 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-09-24 16:23:31.171  INFO 67875 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-09-24 16:23:31.479  INFO 67875 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2018-09-24 16:23:31.855  INFO 67875 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2018-09-24 16:23:31.952  INFO 67875 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2018-09-24 16:23:31.980  INFO 67875 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-09-24 16:23:32.259  INFO 67875 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate Core {5.2.17.Final}
+2018-09-24 16:23:32.262  INFO 67875 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2018-09-24 16:23:32.339  INFO 67875 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-09-24 16:23:32.602  INFO 67875 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2018-09-24 16:23:33.457  INFO 67875 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2018-09-24 16:23:34.409  INFO 67875 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-09-24 16:23:34.940  INFO 67875 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@4fea8b55: startup date [Mon Sep 24 16:23:27 CEST 2018]; root of context hierarchy
+2018-09-24 16:23:35.007  WARN 67875 --- [restartedMain] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2018-09-24 16:23:35.088  INFO 67875 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/input/dc/{dc}],methods=[GET]}" onto public com.example.graph.graphcompute.model.DataCent com.example.graph.graphcompute.controller.InputClusterZoneController.retrieveDataCenter(java.lang.String)
+2018-09-24 16:23:35.090  INFO 67875 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/input/zone/{zone}],methods=[GET]}" onto public com.example.graph.graphcompute.model.Zone com.example.graph.graphcompute.controller.InputClusterZoneController.retrieveZone(java.lang.String)
+2018-09-24 16:23:35.095  INFO 67875 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-09-24 16:23:35.096  INFO 67875 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-09-24 16:23:35.174  INFO 67875 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-09-24 16:23:35.175  INFO 67875 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-09-24 16:23:35.827  WARN 67875 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2018-09-24 16:23:35.906  INFO 67875 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2018-09-24 16:23:35.910  INFO 67875 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
+2018-09-24 16:23:35.921  INFO 67875 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=dataSource,type=HikariDataSource]
+2018-09-24 16:23:36.004  INFO 67875 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8090 (http) with context path ''
+2018-09-24 16:23:36.013  INFO 67875 --- [restartedMain] c.e.g.g.GraphComputeApplication          : Started GraphComputeApplication in 9.283 seconds (JVM running for 10.122)
+2018-09-24 16:34:10.974  INFO 67875 --- [restartedMain] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2018-09-24 16:34:38.218  INFO 67875 --- [RMI TCP Connection(2)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2018-09-24 16:34:38.219  INFO 67875 --- [RMI TCP Connection(2)-127.0.0.1] ConfigServletWebServerApplicationContext : Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@4fea8b55: startup date [Mon Sep 24 16:23:27 CEST 2018]; root of context hierarchy
+2018-09-24 16:34:38.228  INFO 67875 --- [RMI TCP Connection(2)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2018-09-24 16:34:38.237  INFO 67875 --- [RMI TCP Connection(2)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2018-09-24 16:53:00.504  INFO 68618 --- [restartedMain] c.e.g.g.GraphComputeApplication          : Starting GraphComputeApplication on Dipeshs-MacBook-Pro.local with PID 68618 (started by Dipesh in /Users/Dipesh/OneDrive/Research Engineer/workspace/graph-compute)
+2018-09-24 16:53:00.508  INFO 68618 --- [restartedMain] c.e.g.g.GraphComputeApplication          : No active profile set, falling back to default profiles: default
+2018-09-24 16:53:00.564  INFO 68618 --- [restartedMain] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@1a97577c: startup date [Mon Sep 24 16:53:00 CEST 2018]; root of context hierarchy
+2018-09-24 16:53:02.022  INFO 68618 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$74568ed3] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-09-24 16:53:02.613  INFO 68618 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8090 (http)
+2018-09-24 16:53:02.642  INFO 68618 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-09-24 16:53:02.642  INFO 68618 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.32
+2018-09-24 16:53:02.647  INFO 68618 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/Dipesh/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+2018-09-24 16:53:02.738  INFO 68618 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-09-24 16:53:02.738  INFO 68618 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2174 ms
+2018-09-24 16:53:02.821  INFO 68618 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2018-09-24 16:53:02.825  INFO 68618 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-09-24 16:53:02.826  INFO 68618 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-09-24 16:53:02.826  INFO 68618 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-09-24 16:53:02.827  INFO 68618 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-09-24 16:53:03.001  INFO 68618 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2018-09-24 16:53:03.259  INFO 68618 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2018-09-24 16:53:03.309  INFO 68618 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2018-09-24 16:53:03.323  INFO 68618 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-09-24 16:53:03.400  INFO 68618 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate Core {5.2.17.Final}
+2018-09-24 16:53:03.403  INFO 68618 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2018-09-24 16:53:03.543  INFO 68618 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-09-24 16:53:03.684  INFO 68618 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2018-09-24 16:53:04.244  INFO 68618 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2018-09-24 16:53:04.825  INFO 68618 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-09-24 16:53:05.157  INFO 68618 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@1a97577c: startup date [Mon Sep 24 16:53:00 CEST 2018]; root of context hierarchy
+2018-09-24 16:53:05.201  WARN 68618 --- [restartedMain] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2018-09-24 16:53:05.245  INFO 68618 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/input/dc/{dc}],methods=[GET]}" onto public com.example.graph.graphcompute.model.DataCent com.example.graph.graphcompute.controller.InputClusterZoneController.retrieveDataCenter(java.lang.String)
+2018-09-24 16:53:05.246  INFO 68618 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/input/zone/{zone}],methods=[GET]}" onto public com.example.graph.graphcompute.model.Zone com.example.graph.graphcompute.controller.InputClusterZoneController.retrieveZone(java.lang.String)
+2018-09-24 16:53:05.250  INFO 68618 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-09-24 16:53:05.252  INFO 68618 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-09-24 16:53:05.320  INFO 68618 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-09-24 16:53:05.320  INFO 68618 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-09-24 16:53:05.691  WARN 68618 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2018-09-24 16:53:05.741  INFO 68618 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2018-09-24 16:53:05.743  INFO 68618 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
+2018-09-24 16:53:05.750  INFO 68618 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=dataSource,type=HikariDataSource]
+2018-09-24 16:53:05.799  INFO 68618 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8090 (http) with context path ''
+2018-09-24 16:53:05.805  INFO 68618 --- [restartedMain] c.e.g.g.GraphComputeApplication          : Started GraphComputeApplication in 5.665 seconds (JVM running for 6.32)
+2018-09-24 16:53:06.204  INFO 68618 --- [restartedMain] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2018-09-24 16:53:06.444  INFO 68618 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2018-09-24 16:53:06.449  INFO 68618 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2018-09-24 16:53:37.073  INFO 68636 --- [restartedMain] c.e.g.g.GraphComputeApplication          : Starting GraphComputeApplication on Dipeshs-MacBook-Pro.local with PID 68636 (started by Dipesh in /Users/Dipesh/OneDrive/Research Engineer/workspace/graph-compute)
+2018-09-24 16:53:37.078  INFO 68636 --- [restartedMain] c.e.g.g.GraphComputeApplication          : No active profile set, falling back to default profiles: default
+2018-09-24 16:53:37.146  INFO 68636 --- [restartedMain] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@753da14c: startup date [Mon Sep 24 16:53:37 CEST 2018]; root of context hierarchy
+2018-09-24 16:53:39.406  INFO 68636 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$8b63d0b6] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-09-24 16:53:40.164  INFO 68636 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8090 (http)
+2018-09-24 16:53:40.201  INFO 68636 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-09-24 16:53:40.201  INFO 68636 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.32
+2018-09-24 16:53:40.209  INFO 68636 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/Dipesh/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+2018-09-24 16:53:40.325  INFO 68636 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-09-24 16:53:40.326  INFO 68636 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3179 ms
+2018-09-24 16:53:40.483  INFO 68636 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2018-09-24 16:53:40.491  INFO 68636 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-09-24 16:53:40.492  INFO 68636 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-09-24 16:53:40.493  INFO 68636 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-09-24 16:53:40.493  INFO 68636 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-09-24 16:53:40.743  INFO 68636 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2018-09-24 16:53:41.084  INFO 68636 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2018-09-24 16:53:41.191  INFO 68636 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2018-09-24 16:53:41.213  INFO 68636 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-09-24 16:53:41.461  INFO 68636 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate Core {5.2.17.Final}
+2018-09-24 16:53:41.464  INFO 68636 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2018-09-24 16:53:41.537  INFO 68636 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-09-24 16:53:41.741  INFO 68636 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2018-09-24 16:53:42.589  INFO 68636 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2018-09-24 16:53:43.508  INFO 68636 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-09-24 16:53:44.040  INFO 68636 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@753da14c: startup date [Mon Sep 24 16:53:37 CEST 2018]; root of context hierarchy
+2018-09-24 16:53:44.100  WARN 68636 --- [restartedMain] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2018-09-24 16:53:44.174  INFO 68636 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/input/dc/{dc}],methods=[GET]}" onto public com.example.graph.graphcompute.model.DataCent com.example.graph.graphcompute.controller.InputClusterZoneController.retrieveDataCenter(java.lang.String)
+2018-09-24 16:53:44.176  INFO 68636 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/input/zone/{zone}],methods=[GET]}" onto public com.example.graph.graphcompute.model.Zone com.example.graph.graphcompute.controller.InputClusterZoneController.retrieveZone(java.lang.String)
+2018-09-24 16:53:44.179  INFO 68636 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-09-24 16:53:44.181  INFO 68636 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-09-24 16:53:44.267  INFO 68636 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-09-24 16:53:44.268  INFO 68636 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-09-24 16:53:44.926  WARN 68636 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2018-09-24 16:53:45.004  INFO 68636 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2018-09-24 16:53:45.008  INFO 68636 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
+2018-09-24 16:53:45.029  INFO 68636 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=dataSource,type=HikariDataSource]
+2018-09-24 16:53:45.125  INFO 68636 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8090 (http) with context path ''
+2018-09-24 16:53:45.133  INFO 68636 --- [restartedMain] c.e.g.g.GraphComputeApplication          : Started GraphComputeApplication in 8.516 seconds (JVM running for 9.327)
+2018-09-24 16:53:57.257  INFO 68636 --- [restartedMain] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2018-09-24 16:54:25.695  INFO 68636 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2018-09-24 16:54:25.703  INFO 68636 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2018-09-24 16:54:46.796  INFO 68663 --- [restartedMain] c.e.g.g.GraphComputeApplication          : Starting GraphComputeApplication on Dipeshs-MacBook-Pro.local with PID 68663 (started by Dipesh in /Users/Dipesh/OneDrive/Research Engineer/workspace/graph-compute)
+2018-09-24 16:54:46.802  INFO 68663 --- [restartedMain] c.e.g.g.GraphComputeApplication          : No active profile set, falling back to default profiles: default
+2018-09-24 16:54:46.898  INFO 68663 --- [restartedMain] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@5e3d8868: startup date [Mon Sep 24 16:54:46 CEST 2018]; root of context hierarchy
+2018-09-24 16:54:49.291  INFO 68663 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$2905907e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-09-24 16:54:50.043  INFO 68663 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8090 (http)
+2018-09-24 16:54:50.079  INFO 68663 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-09-24 16:54:50.080  INFO 68663 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.32
+2018-09-24 16:54:50.087  INFO 68663 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/Dipesh/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+2018-09-24 16:54:50.231  INFO 68663 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-09-24 16:54:50.232  INFO 68663 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3335 ms
+2018-09-24 16:54:50.379  INFO 68663 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2018-09-24 16:54:50.387  INFO 68663 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-09-24 16:54:50.387  INFO 68663 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-09-24 16:54:50.388  INFO 68663 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-09-24 16:54:50.388  INFO 68663 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-09-24 16:54:50.649  INFO 68663 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2018-09-24 16:54:50.967  INFO 68663 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2018-09-24 16:54:51.042  INFO 68663 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2018-09-24 16:54:51.059  INFO 68663 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-09-24 16:54:51.317  INFO 68663 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate Core {5.2.17.Final}
+2018-09-24 16:54:51.319  INFO 68663 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2018-09-24 16:54:51.384  INFO 68663 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-09-24 16:54:51.567  INFO 68663 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2018-09-24 16:54:52.340  INFO 68663 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2018-09-24 16:54:53.207  INFO 68663 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-09-24 16:54:53.698  INFO 68663 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@5e3d8868: startup date [Mon Sep 24 16:54:46 CEST 2018]; root of context hierarchy
+2018-09-24 16:54:53.754  WARN 68663 --- [restartedMain] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2018-09-24 16:54:53.824  INFO 68663 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/input/dc/{dc}],methods=[GET]}" onto public com.example.graph.graphcompute.model.DataCent com.example.graph.graphcompute.controller.InputClusterZoneController.retrieveDataCenter(java.lang.String)
+2018-09-24 16:54:53.825  INFO 68663 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/input/zone/{zone}],methods=[GET]}" onto public com.example.graph.graphcompute.model.Zone com.example.graph.graphcompute.controller.InputClusterZoneController.retrieveZone(java.lang.String)
+2018-09-24 16:54:53.830  INFO 68663 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-09-24 16:54:53.831  INFO 68663 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-09-24 16:54:53.907  INFO 68663 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-09-24 16:54:53.907  INFO 68663 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-09-24 16:54:54.510  WARN 68663 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2018-09-24 16:54:54.573  INFO 68663 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2018-09-24 16:54:54.576  INFO 68663 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
+2018-09-24 16:54:54.590  INFO 68663 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=dataSource,type=HikariDataSource]
+2018-09-24 16:54:54.665  INFO 68663 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8090 (http) with context path ''
+2018-09-24 16:54:54.674  INFO 68663 --- [restartedMain] c.e.g.g.GraphComputeApplication          : Started GraphComputeApplication in 8.364 seconds (JVM running for 9.121)
+2018-09-24 16:54:55.202  INFO 68663 --- [restartedMain] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2018-09-24 16:56:17.544  INFO 68663 --- [Thread-2] ConfigServletWebServerApplicationContext : Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@5e3d8868: startup date [Mon Sep 24 16:54:46 CEST 2018]; root of context hierarchy
+2018-09-24 16:56:17.552  INFO 68663 --- [Thread-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2018-09-24 16:56:17.556  INFO 68663 --- [Thread-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2018-09-24 16:56:17.857  INFO 68663 --- [restartedMain] c.e.g.g.GraphComputeApplication          : Starting GraphComputeApplication on Dipeshs-MacBook-Pro.local with PID 68663 (started by Dipesh in /Users/Dipesh/OneDrive/Research Engineer/workspace/graph-compute)
+2018-09-24 16:56:17.857  INFO 68663 --- [restartedMain] c.e.g.g.GraphComputeApplication          : No active profile set, falling back to default profiles: default
+2018-09-24 16:56:17.862  INFO 68663 --- [restartedMain] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@76a555c2: startup date [Mon Sep 24 16:56:17 CEST 2018]; root of context hierarchy
+2018-09-24 17:04:09.315  INFO 68892 --- [restartedMain] c.e.g.g.GraphComputeApplication          : Starting GraphComputeApplication on Dipeshs-MacBook-Pro.local with PID 68892 (started by Dipesh in /Users/Dipesh/OneDrive/Research Engineer/workspace/graph-compute)
+2018-09-24 17:04:09.319  INFO 68892 --- [restartedMain] c.e.g.g.GraphComputeApplication          : No active profile set, falling back to default profiles: default
+2018-09-24 17:04:09.369  INFO 68892 --- [restartedMain] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@4a659a52: startup date [Mon Sep 24 17:04:09 CEST 2018]; root of context hierarchy
+2018-09-24 17:04:10.742  INFO 68892 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$de66b033] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-09-24 17:04:11.301  INFO 68892 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8090 (http)
+2018-09-24 17:04:11.327  INFO 68892 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-09-24 17:04:11.328  INFO 68892 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.32
+2018-09-24 17:04:11.333  INFO 68892 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/Dipesh/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+2018-09-24 17:04:11.419  INFO 68892 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-09-24 17:04:11.420  INFO 68892 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2052 ms
+2018-09-24 17:04:11.501  INFO 68892 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2018-09-24 17:04:11.506  INFO 68892 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-09-24 17:04:11.507  INFO 68892 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-09-24 17:04:11.507  INFO 68892 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-09-24 17:04:11.507  INFO 68892 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-09-24 17:04:11.677  INFO 68892 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2018-09-24 17:04:11.926  INFO 68892 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2018-09-24 17:04:11.974  INFO 68892 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2018-09-24 17:04:11.988  INFO 68892 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-09-24 17:04:12.073  INFO 68892 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate Core {5.2.17.Final}
+2018-09-24 17:04:12.075  INFO 68892 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2018-09-24 17:04:12.228  INFO 68892 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-09-24 17:04:12.371  INFO 68892 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2018-09-24 17:04:12.875  INFO 68892 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2018-09-24 17:04:13.402  INFO 68892 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-09-24 17:04:13.703  INFO 68892 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@4a659a52: startup date [Mon Sep 24 17:04:09 CEST 2018]; root of context hierarchy
+2018-09-24 17:04:13.741  WARN 68892 --- [restartedMain] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2018-09-24 17:04:13.780  INFO 68892 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/input/dc/{dc}],methods=[GET]}" onto public com.example.graph.graphcompute.model.DataCent com.example.graph.graphcompute.controller.InputClusterZoneController.retrieveDataCenter(java.lang.String)
+2018-09-24 17:04:13.782  INFO 68892 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/input/zone/{zone}],methods=[GET]}" onto public com.example.graph.graphcompute.model.Zone com.example.graph.graphcompute.controller.InputClusterZoneController.retrieveZone(java.lang.String)
+2018-09-24 17:04:13.786  INFO 68892 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-09-24 17:04:13.787  INFO 68892 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-09-24 17:04:13.828  INFO 68892 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-09-24 17:04:13.829  INFO 68892 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-09-24 17:04:14.155  WARN 68892 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2018-09-24 17:04:14.201  INFO 68892 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2018-09-24 17:04:14.204  INFO 68892 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
+2018-09-24 17:04:14.212  INFO 68892 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=dataSource,type=HikariDataSource]
+2018-09-24 17:04:14.263  INFO 68892 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8090 (http) with context path ''
+2018-09-24 17:04:14.267  INFO 68892 --- [restartedMain] c.e.g.g.GraphComputeApplication          : Started GraphComputeApplication in 5.29 seconds (JVM running for 5.96)
+2018-09-24 17:04:14.636  INFO 68892 --- [restartedMain] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2018-09-24 17:04:29.466  INFO 68892 --- [http-nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-09-24 17:04:29.467  INFO 68892 --- [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2018-09-24 17:04:29.494  INFO 68892 --- [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 27 ms
+2018-09-24 17:05:54.971  INFO 68892 --- [RMI TCP Connection(2)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2018-09-24 17:05:54.972  INFO 68892 --- [RMI TCP Connection(2)-127.0.0.1] ConfigServletWebServerApplicationContext : Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@4a659a52: startup date [Mon Sep 24 17:04:09 CEST 2018]; root of context hierarchy
+2018-09-24 17:05:54.979  INFO 68892 --- [RMI TCP Connection(2)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2018-09-24 17:05:54.983  INFO 68892 --- [RMI TCP Connection(2)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2018-09-24 17:09:07.470  INFO 69007 --- [restartedMain] c.e.g.g.GraphComputeApplication          : Starting GraphComputeApplication on Dipeshs-MacBook-Pro.local with PID 69007 (started by Dipesh in /Users/Dipesh/OneDrive/Research Engineer/workspace/graph-compute)
+2018-09-24 17:09:07.473  INFO 69007 --- [restartedMain] c.e.g.g.GraphComputeApplication          : No active profile set, falling back to default profiles: default
+2018-09-24 17:09:07.524  INFO 69007 --- [restartedMain] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@63d624cf: startup date [Mon Sep 24 17:09:07 CEST 2018]; root of context hierarchy
+2018-09-24 17:09:08.920  INFO 69007 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$db52910] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-09-24 17:09:09.412  INFO 69007 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8090 (http)
+2018-09-24 17:09:09.441  INFO 69007 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-09-24 17:09:09.442  INFO 69007 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.32
+2018-09-24 17:09:09.447  INFO 69007 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/Dipesh/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+2018-09-24 17:09:09.576  INFO 69007 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-09-24 17:09:09.576  INFO 69007 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2052 ms
+2018-09-24 17:09:09.656  INFO 69007 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2018-09-24 17:09:09.661  INFO 69007 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-09-24 17:09:09.661  INFO 69007 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-09-24 17:09:09.662  INFO 69007 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-09-24 17:09:09.662  INFO 69007 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-09-24 17:09:09.833  INFO 69007 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2018-09-24 17:09:10.085  INFO 69007 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2018-09-24 17:09:10.136  INFO 69007 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2018-09-24 17:09:10.149  INFO 69007 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-09-24 17:09:10.223  INFO 69007 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate Core {5.2.17.Final}
+2018-09-24 17:09:10.225  INFO 69007 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2018-09-24 17:09:10.360  INFO 69007 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-09-24 17:09:10.480  INFO 69007 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2018-09-24 17:09:10.990  INFO 69007 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2018-09-24 17:09:11.493  INFO 69007 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-09-24 17:09:11.807  INFO 69007 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@63d624cf: startup date [Mon Sep 24 17:09:07 CEST 2018]; root of context hierarchy
+2018-09-24 17:09:11.853  WARN 69007 --- [restartedMain] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2018-09-24 17:09:11.903  INFO 69007 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/input/dc/{dc}],methods=[GET]}" onto public com.example.graph.graphcompute.model.DataCent com.example.graph.graphcompute.controller.InputClusterZoneController.retrieveDataCenter(java.lang.String)
+2018-09-24 17:09:11.904  INFO 69007 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/input/zone/{zone}],methods=[GET]}" onto public com.example.graph.graphcompute.model.Zone com.example.graph.graphcompute.controller.InputClusterZoneController.retrieveZone(java.lang.String)
+2018-09-24 17:09:11.908  INFO 69007 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-09-24 17:09:11.909  INFO 69007 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-09-24 17:09:11.960  INFO 69007 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-09-24 17:09:11.961  INFO 69007 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-09-24 17:09:12.380  WARN 69007 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2018-09-24 17:09:12.425  INFO 69007 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2018-09-24 17:09:12.427  INFO 69007 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
+2018-09-24 17:09:12.434  INFO 69007 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=dataSource,type=HikariDataSource]
+2018-09-24 17:09:12.480  INFO 69007 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8090 (http) with context path ''
+2018-09-24 17:09:12.485  INFO 69007 --- [restartedMain] c.e.g.g.GraphComputeApplication          : Started GraphComputeApplication in 5.354 seconds (JVM running for 5.924)
+2018-09-24 17:09:12.904  INFO 69007 --- [restartedMain] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2018-09-24 17:10:30.704  INFO 69007 --- [http-nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-09-24 17:10:30.705  INFO 69007 --- [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2018-09-24 17:10:30.725  INFO 69007 --- [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 19 ms

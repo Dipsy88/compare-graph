@@ -4,23 +4,34 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.client.RestTemplate;
 
 import com.example.graph.graphcompute.clustering.PAMClustering;
-import com.example.graph.graphcompute.model.DataCenter;
+import com.example.graph.graphcompute.db.model.DataCenter;
+import com.example.graph.graphcompute.db.model.Region;
+import com.example.graph.graphcompute.model.DataCent;
 import com.example.graph.graphcompute.model.TwoDataCenterValues;
 import com.example.graph.graphcompute.model.Zone;
+import com.example.graph.graphcompute.repository.DataCenterRepository;
+import com.example.graph.graphcompute.repository.RegionRepository;
 
 import smile.stat.hypothesis.KSTest;
 
 @Controller
 public class ClusteringController {
-	private final int NUM_CLUSTER = 6;
+	private final int NUM_CLUSTER = 4;
 	private String URL_DC;
 
 	private TwoDataCenterValues[] twoDataCenterValuesArray;// two data center name, their latency and bandwidth
+
+	@Autowired
+	private DataCenterRepository dataCenterRepository;
+	@Autowired
+	private RegionRepository regionRepository;
 
 	private Map<String, List<Double>> dataSetValuesMap = new HashMap<>(); // add latency to each dataset
 	// store all data center that have values
@@ -37,16 +48,37 @@ public class ClusteringController {
 		RestTemplate restTemplate = new RestTemplate();
 
 		// Send request with GET method and default Headers.
-		twoDataCenterValuesArray = restTemplate.getForObject(URL_DC, TwoDataCenterValues[].class);
+		this.twoDataCenterValuesArray = restTemplate.getForObject(URL_DC, TwoDataCenterValues[].class);
+		// replace datacenter name with its location
+		replaceDCNameWithLocation(this.twoDataCenterValuesArray);
+
 		this.dataSetValuesMap = addDCValues(twoDataCenterValuesArray, dataSetValuesMap);
 		this.dataSetToOtherValuesMap = computeDistance(this.dataSetValuesMap);
 
 		List<PAMClustering.Cluster> clusterList = cluster(this.dataSetToOtherValuesMap);
 		findZone(clusterList); // store maps in zoneDCMap and dcZoneMap
 
-		System.out.println("done");
+		System.out.println("clustered");
 	}
 
+	// change datacenter name with its location
+	public void replaceDCNameWithLocation(TwoDataCenterValues[] twoDataCenterValuesArray) {
+		for (TwoDataCenterValues twoDataCenterValues : twoDataCenterValuesArray) {
+			DataCenter dc1 = dataCenterRepository.findByName(twoDataCenterValues.getDc1());
+			Long id1 = dc1.getRegionId();
+			Optional<Region> region1 = regionRepository.findById(id1);
+			DataCenter dc2 = dataCenterRepository.findByName(twoDataCenterValues.getDc1());
+			long id2 = dc2.getRegionId();
+			Optional<Region> region2 = regionRepository.findById(id2);
+
+			if (region1.isPresent())
+				twoDataCenterValues.setDc1(region1.get().getLocation());
+			if (region2.isPresent())
+				twoDataCenterValues.setDc1(region2.get().getLocation());
+		}
+	}
+
+	// store maps in zoneDCMap and dcZoneMap
 	public void findZone(List<PAMClustering.Cluster> clusterList) {
 		int i = 1;
 		for (PAMClustering.Cluster cluster : clusterList) {
@@ -58,8 +90,8 @@ public class ClusteringController {
 	}
 
 	// get zone for the provided datacenter
-	public DataCenter getDC(String dcName) {
-		DataCenter dc = new DataCenter();
+	public DataCent getDC(String dcName) {
+		DataCent dc = new DataCent();
 		dc.setName(dcName);
 		dc.setZoneID(dcZoneMap.get(dcName));
 		return dc;

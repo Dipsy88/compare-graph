@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.graph.graphcompute.model.DataCenter;
+import com.example.graph.graphcompute.model.DataCent;
 import com.example.graph.graphcompute.model.Zone;
 
 @RestController
@@ -17,7 +17,7 @@ public class InputClusterZoneController {
 	ClusteringController clusteringController;
 
 	@GetMapping("/dc/{dc}")
-	public DataCenter retrieveDataCenter(@PathVariable String dc) {
+	public DataCent retrieveDataCenter(@PathVariable String dc) {
 		return (clusteringController.getDC(dc));
 	}
 

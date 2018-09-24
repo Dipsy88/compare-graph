@@ -1,6 +1,6 @@
 package com.example.graph.graphcompute.model;
 
-public class DataCenter {
+public class DataCent {
 	private String name;
 	private String zoneID;
 
