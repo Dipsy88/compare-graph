@@ -8,18 +8,19 @@ import java.util.Map;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.client.RestTemplate;
 
-import com.example.graph.graphcompute.model.GetPropertyValues;
+import com.example.graph.graphcompute.clustering.PAMClustering;
+import com.example.graph.graphcompute.model.DataCenter;
 import com.example.graph.graphcompute.model.TwoDataCenterValues;
+import com.example.graph.graphcompute.model.Zone;
 
 import smile.stat.hypothesis.KSTest;
 
 @Controller
-public class GraphComputeController {
-
+public class ClusteringController {
+	private final int NUM_CLUSTER = 6;
 	private String URL_DC;
 
 	private TwoDataCenterValues[] twoDataCenterValuesArray;// two data center name, their latency and bandwidth
-	private GetPropertyValues propValues = new GetPropertyValues(); // store config
 
 	private Map<String, List<Double>> dataSetValuesMap = new HashMap<>(); // add latency to each dataset
 	// store all data center that have values
@@ -27,6 +28,10 @@ public class GraphComputeController {
 	// dc1 mapped to dc2 with latency using distance metric (Kolmogorov–Smirnov
 	// statistic)
 	private Map<String, Map<String, Double>> dataSetToOtherValuesMap = new HashMap<>();
+	// zonemap with list of datacenters
+	private Map<String, List<String>> zoneDCMap = new HashMap<String, List<String>>();
+	// datacenter linked to each zone
+	private Map<String, String> dcZoneMap = new HashMap<String, String>();
 
 	public void run() {
 		RestTemplate restTemplate = new RestTemplate();
@@ -36,6 +41,44 @@ public class GraphComputeController {
 		this.dataSetValuesMap = addDCValues(twoDataCenterValuesArray, dataSetValuesMap);
 		this.dataSetToOtherValuesMap = computeDistance(this.dataSetValuesMap);
 
+		List<PAMClustering.Cluster> clusterList = cluster(this.dataSetToOtherValuesMap);
+		findZone(clusterList); // store maps in zoneDCMap and dcZoneMap
+
+		System.out.println("done");
+	}
+
+	public void findZone(List<PAMClustering.Cluster> clusterList) {
+		int i = 1;
+		for (PAMClustering.Cluster cluster : clusterList) {
+			this.zoneDCMap.put("zone" + i, cluster.getDataCenterList());
+			for (String dcName : cluster.getDataCenterList())
+				this.dcZoneMap.put(dcName, "zone" + i);
+			i++;
+		}
+	}
+
+	// get zone for the provided datacenter
+	public DataCenter getDC(String dcName) {
+		DataCenter dc = new DataCenter();
+		dc.setName(dcName);
+		dc.setZoneID(dcZoneMap.get(dcName));
+		return dc;
+	}
+
+	// get a list of datacenters for the provided zone name
+	public Zone getZone(String zoneName) {
+		Zone zone = new Zone();
+		zone.setName(zoneName);
+		zone.setDcList(zoneDCMap.get(zoneName));
+		return zone;
+	}
+
+	// cluster
+	public List<PAMClustering.Cluster> cluster(Map<String, Map<String, Double>> dataSetToOtherValuesMap) {
+		PAMClustering clustering = new PAMClustering();
+		clustering.setNumCluster(this.NUM_CLUSTER);
+		clustering.setDataSetToOtherValuesMap(dataSetToOtherValuesMap);
+		return (clustering.run());
 	}
 
 	// add values to the hashMap
@@ -55,6 +98,7 @@ public class GraphComputeController {
 		return dataSetValuesMap;
 	}
 
+	// compute distance between the datacenters and put in a matrix
 	public Map<String, Map<String, Double>> computeDistance(Map<String, List<Double>> dataSetValuesMap) {
 		Map<String, Map<String, Double>> dataSetToOtherValuesMap = new HashMap<>();
 		for (int i = 0; i < dcList.size(); i++) {
@@ -68,11 +112,11 @@ public class GraphComputeController {
 
 				double[] ds1Arr = new double[ds1ValList.size()];
 				for (int a = 0; a < ds1ValList.size(); a++)
-					ds1Arr[i] = ds1ValList.get(i);
+					ds1Arr[a] = ds1ValList.get(a);
 
 				double[] ds2Arr = new double[ds2ValList.size()];
 				for (int a = 0; a < ds2ValList.size(); a++)
-					ds2Arr[i] = ds2ValList.get(i);
+					ds2Arr[a] = ds2ValList.get(a);
 
 				KSTest ksTest;
 				ksTest = KSTest.test(ds1Arr, ds2Arr);
@@ -83,7 +127,7 @@ public class GraphComputeController {
 				valMap.put(ds2, ksTest.d);
 				dataSetToOtherValuesMap.put(ds1, valMap);
 
-				System.out.println(ksTest.d);
+//				System.out.println(i + ": " + j);
 			}
 
 		}

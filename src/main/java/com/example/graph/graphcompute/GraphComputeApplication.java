@@ -9,7 +9,7 @@ import org.springframework.core.task.SimpleAsyncTaskExecutor;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.scheduling.annotation.EnableAsync;
 
-import com.example.graph.graphcompute.controller.GraphComputeController;
+import com.example.graph.graphcompute.controller.ClusteringController;
 import com.example.graph.graphcompute.model.GetPropertyValues;
 
 @SpringBootApplication
@@ -17,7 +17,7 @@ import com.example.graph.graphcompute.model.GetPropertyValues;
 public class GraphComputeApplication {
 
 	@Autowired
-	GraphComputeController graphComputeController;
+	ClusteringController clusteringController;
 
 	private static GetPropertyValues propValues = new GetPropertyValues(); // store config
 
@@ -36,9 +36,9 @@ public class GraphComputeApplication {
 		return new CommandLineRunner() {
 			public void run(String... args) throws Exception {
 				propValues.readValues(); // read config file
-				graphComputeController.setURL_DC(propValues.getUrlDC());
 
-				graphComputeController.run();
+				clusteringController.setURL_DC(propValues.getUrlDC());
+				clusteringController.run();
 			}
 		};
 	}
