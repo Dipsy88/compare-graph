@@ -1,0 +1,72 @@
+package com.example.graph.graphcompute.model;
+
+import java.io.Serializable;
+
+/**
+ * Atom vertices for molecular structure
+ * <p>
+ * Atoms are represented as vertices in graph representation of molecules.
+ * </p>
+ */
+public class AtomVertex implements Serializable {
+
+	private String name;
+	private int position;
+	private int atomId;
+
+	public static final String[] ATOM_CODES = { "ERR", "H", "C", "O", "CU", "N", "S", "P", "CL", "ZN", "B", "BR", "CO",
+			"MN", "AS", "AL", "NI", "SE", "SI", "V", "SN", "I", "F", "LI", "SB", "FE", "PD", "HG", "BI", "NA", "CA",
+			"TI", "ZR", "HO", "GE", "PT", "RU", "RH", "CR", "GA", "K", "AG", "AU", "TB", "IR", "TE", "MG", "PB", "W",
+			"CS", "MO", "RE", "CD", "OS", "PR", "ND", "SM", "GD", "YB", "ER", "U", "TL", "NB", "AC" };
+
+	public int getPosition() {
+		return position;
+	}
+
+	public int getAtomId() {
+		return atomId;
+	}
+
+	public AtomVertex(String name) {
+		this.name = name;
+	}
+
+	public AtomVertex(int position, int atomId) {
+		if (0 >= atomId || ATOM_CODES.length <= atomId) {
+			throw new IndexOutOfBoundsException("AtomId: " + atomId + " is out of bounds!");
+		}
+		this.position = position;
+		this.atomId = atomId;
+	}
+
+	public String getAtomCode() {
+		return ATOM_CODES[atomId];
+	}
+
+	@Override
+	public String toString() {
+		return this.name;
+	}
+
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+
+		AtomVertex that = (AtomVertex) o;
+		return name == that.name;
+	}
+
+	/**
+	 * Position does not effect the hash of Atom. The same atom chain can be located
+	 * different positions.
+	 *
+	 * @return atomId
+	 */
+
+	public int hashCode() {
+		int a = name.hashCode();
+		return name.hashCode();
+	}
+}

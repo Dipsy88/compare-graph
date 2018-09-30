@@ -10,11 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.client.RestTemplate;
 
+import com.example.graph.graphcompute.clustering.AffinityPropagation;
 import com.example.graph.graphcompute.clustering.PAMClustering;
 import com.example.graph.graphcompute.db.model.DataCenter;
 import com.example.graph.graphcompute.db.model.Region;
 import com.example.graph.graphcompute.model.DataCent;
 import com.example.graph.graphcompute.model.TwoDataCenterValues;
+import com.example.graph.graphcompute.model.ValCount;
 import com.example.graph.graphcompute.model.Zone;
 import com.example.graph.graphcompute.repository.DataCenterRepository;
 import com.example.graph.graphcompute.repository.RegionRepository;
@@ -26,7 +28,7 @@ public class ClusteringController {
 	private final int NUM_CLUSTER = 4;
 	private String URL_DC;
 
-	private TwoDataCenterValues[] twoDataCenterValuesArray;// two data center name, their latency and bandwidth
+	private TwoDataCenterValues[] twoDataCenterValuesArray;
 
 	@Autowired
 	private DataCenterRepository dataCenterRepository;
@@ -45,40 +47,143 @@ public class ClusteringController {
 	private Map<String, String> dcZoneMap = new HashMap<String, String>();
 
 	public void run() {
-		RestTemplate restTemplate = new RestTemplate();
+		Map<String, Map<String, Double>> twoDCMap = new HashMap<>();
+		twoDCMap = readDC();
 
-		// Send request with GET method and default Headers.
-		this.twoDataCenterValuesArray = restTemplate.getForObject(URL_DC, TwoDataCenterValues[].class);
-		// replace datacenter name with its location
-		replaceDCNameWithLocation(this.twoDataCenterValuesArray);
+		// do clustering
+		// 1) PAM clustering
+		List<PAMClustering.Cluster> clusterPAM = cluster(twoDCMap);
+		System.out.println(clusterPAM);
 
-		this.dataSetValuesMap = addDCValues(twoDataCenterValuesArray, dataSetValuesMap);
-		this.dataSetToOtherValuesMap = computeDistance(this.dataSetValuesMap);
+		// 2) affinity propagation
+		// first convert to 2D matrix
+		List<String> dataPoints = getListDP(twoDCMap);
+		double[][] matrix = convertMatrix(twoDCMap, dataPoints);
+		AffinityPropagation affinityPropagation = new AffinityPropagation(matrix);
+		List<AffinityPropagation.ClusterIds> clusterIdList = affinityPropagation.run();
 
-		List<PAMClustering.Cluster> clusterList = cluster(this.dataSetToOtherValuesMap);
-		findZone(clusterList); // store maps in zoneDCMap and dcZoneMap
+		System.out.println("Affinity clustering");
+		for (AffinityPropagation.ClusterIds clusterId : clusterIdList) {
+			String text = "";
+			for (Integer item : clusterId.getDataCenterIdList()) {
+				text += dataPoints.get(item) + " ";
+			}
+			System.out.println(text);
+		}
+
+//		List<PAMClustering.Cluster> clusterList = cluster(this.dataSetToOtherValuesMap);
+//		findZone(clusterPAM); // store maps in zoneDCMap and dcZoneMap
+		findZone(clusterIdList, dataPoints);
 
 		System.out.println("clustered");
 	}
 
+	// put data in a two dimensional matrix
+	public static double[][] convertMatrix(Map<String, Map<String, Double>> dataSetMap, List<String> dataPoints) {
+		double ret[][] = new double[dataSetMap.size()][dataSetMap.size()];
+		for (int i = 0; i < dataPoints.size(); i++) {
+			for (int j = 0; j < dataPoints.size(); j++) {
+				if (i == j) {
+					ret[i][j] = 0;
+					continue;
+				}
+				// connection to other datapoint exists
+				if (dataSetMap.get(dataPoints.get(i)).containsKey(dataPoints.get(j)))
+					ret[i][j] = dataSetMap.get(dataPoints.get(i)).get(dataPoints.get(j));
+				// connection does not exist
+				// check if other way connection exits
+				else {
+					if (dataSetMap.get(dataPoints.get(j)).containsKey(dataPoints.get(i)))
+						ret[i][j] = dataSetMap.get(dataPoints.get(j)).get(dataPoints.get(i));
+					else
+						ret[i][j] = -1;
+				}
+			}
+		}
+		return ret;
+	}
+
+	// get a list of data centers
+	public static List<String> getListDP(Map<String, Map<String, Double>> dataSetMap) {
+		List<String> dpList = new ArrayList<String>();
+		for (String key : dataSetMap.keySet())
+			dpList.add(key);
+		return dpList;
+	}
+
+	// get request to read the latency, bandwidth and return in a form of 2d array
+	public Map<String, Map<String, Double>> readDC() {
+		RestTemplate restTemplate = new RestTemplate();
+		// two data center name, their latency and bandwidth
+		TwoDataCenterValues[] twoDataCenterValuesArray;
+		// Send request with GET method and default Headers.
+		twoDataCenterValuesArray = restTemplate.getForObject(URL_DC, TwoDataCenterValues[].class);
+		// replace datacenter name with its location
+		// two data center name, their latency and bandwidth
+		TwoDataCenterValues[] twoDataCenterLocationArray;
+		twoDataCenterLocationArray = replaceDCNameWithLocation(twoDataCenterValuesArray);
+
+		// store in an array
+		return calculateLatency(twoDataCenterLocationArray);
+	}
+
+	// return the latency and bandwidth in form of 2d array
+	public Map<String, Map<String, Double>> calculateLatency(TwoDataCenterValues[] twoDataCenterLocationArray) {
+		Map<String, Map<String, ValCount>> dcValMap = new HashMap<>();
+		for (TwoDataCenterValues twoDataCenter : twoDataCenterLocationArray) {
+			Map<String, ValCount> toMap = new HashMap<>();
+			String dc1Name = twoDataCenter.getDc1();
+			String dc2Name = twoDataCenter.getDc2();
+			double latency = twoDataCenter.getLatency();
+			// key exists then get to
+			if (dcValMap.containsKey(dc1Name))
+				toMap = dcValMap.get(dc1Name);
+			ValCount valCount = new ValCount();
+			// to for the key exists already
+			if (toMap.containsKey(dc2Name))
+				valCount = toMap.get(dc2Name);
+			valCount.increaseVal(latency);
+
+			toMap.put(dc2Name, valCount);
+			dcValMap.put(dc1Name, toMap);
+		}
+
+		Map<String, Map<String, Double>> retMap = new HashMap<>();
+		// convert to double val for latency
+		for (Map.Entry<String, Map<String, ValCount>> entry : dcValMap.entrySet()) {
+			Map<String, ValCount> entryVal = entry.getValue();
+
+			Map<String, Double> toMap = new HashMap<>();
+			for (Map.Entry<String, ValCount> toEntry : entryVal.entrySet()) {
+				ValCount valCount = toEntry.getValue();
+				double latency = valCount.getLatency() / valCount.getCount();
+				toMap.put(toEntry.getKey(), latency);
+			}
+			retMap.put(entry.getKey(), toMap);
+		}
+		return retMap;
+	}
+
 	// change datacenter name with its location
-	public void replaceDCNameWithLocation(TwoDataCenterValues[] twoDataCenterValuesArray) {
+	public TwoDataCenterValues[] replaceDCNameWithLocation(TwoDataCenterValues[] twoDataCenterValuesArray) {
 		for (TwoDataCenterValues twoDataCenterValues : twoDataCenterValuesArray) {
 			DataCenter dc1 = dataCenterRepository.findByName(twoDataCenterValues.getDc1());
 			Long id1 = dc1.getRegionId();
 			Optional<Region> region1 = regionRepository.findById(id1);
-			DataCenter dc2 = dataCenterRepository.findByName(twoDataCenterValues.getDc1());
+			DataCenter dc2 = dataCenterRepository.findByName(twoDataCenterValues.getDc2());
 			long id2 = dc2.getRegionId();
 			Optional<Region> region2 = regionRepository.findById(id2);
 
 			if (region1.isPresent())
 				twoDataCenterValues.setDc1(region1.get().getLocation());
 			if (region2.isPresent())
-				twoDataCenterValues.setDc1(region2.get().getLocation());
+				twoDataCenterValues.setDc2(region2.get().getLocation());
 		}
+		return twoDataCenterValuesArray;
 	}
 
 	// store maps in zoneDCMap and dcZoneMap
+	// PAM clustering
 	public void findZone(List<PAMClustering.Cluster> clusterList) {
 		int i = 1;
 		for (PAMClustering.Cluster cluster : clusterList) {
@@ -89,11 +194,36 @@ public class ClusteringController {
 		}
 	}
 
-	// get zone for the provided datacenter
+	// store maps in zoneDCMap and dcZoneMap
+	// Affinity Propagation
+	public void findZone(List<AffinityPropagation.ClusterIds> clusterIdList, List<String> dataPoints) {
+		int i = 1;
+		for (AffinityPropagation.ClusterIds clusterId : clusterIdList) {
+			List<String> itemList = new ArrayList<String>();
+			for (Integer item : clusterId.getDataCenterIdList()) {
+				String text = dataPoints.get(item);
+				itemList.add(text);
+				this.dcZoneMap.put(text, "zone" + i);
+			}
+			this.zoneDCMap.put("zone" + i, itemList);
+			i++;
+		}
+	}
+
+	// get zone for the locations
+	// PAM clustering
 	public DataCent getDC(String dcName) {
 		DataCent dc = new DataCent();
 		dc.setName(dcName);
 		dc.setZoneID(dcZoneMap.get(dcName));
+		return dc;
+	}
+
+	// get zone for the locations
+	// Affinity propagation
+	public DataCent getDCAffProp(String locName) {
+		DataCent dc = new DataCent();
+
 		return dc;
 	}
 

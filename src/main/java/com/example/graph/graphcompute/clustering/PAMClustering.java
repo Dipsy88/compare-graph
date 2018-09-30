@@ -11,7 +11,7 @@ public class PAMClustering {
 
 	private int numCluster;
 	private List<String> centroidList = new ArrayList<>(); // list of centers
-	private List<String> oldCentroidList = new ArrayList<>(); // list of old centers
+//	private List<String> oldCentroidList = new ArrayList<>(); // list of old centers
 	private Map<String, Map<String, Double>> dataSetToOtherValuesMap = new HashMap<>();
 
 	// map of clusters
@@ -48,19 +48,8 @@ public class PAMClustering {
 			Cluster cluster = entry.getValue();
 			newCentroidList.add(cluster.getDataCenterList().get(assignToCluster(cluster)));
 		}
-
-		if (oldCentroidList == newCentroidList) {
-			isChanged = false;
-
-		} else {
-			oldCentroidList = new ArrayList<>();
-			for (String item : centroidList)
-				oldCentroidList.add(item);
-
-			isChanged = !listEqualsIgnoreOrder(newCentroidList, centroidList);
-			centroidList = newCentroidList;
-
-		}
+		isChanged = !listEqualsIgnoreOrder(newCentroidList, centroidList);
+		centroidList = newCentroidList;
 
 		return isChanged;
 	}
@@ -73,7 +62,6 @@ public class PAMClustering {
 		int bestCenter = 0;
 		double similarity = 0;
 		double bestSimilarity = Double.MAX_VALUE;
-		int pos = 0;
 
 		for (int i = 0; i < cluster.getDataCenterList().size(); i++) {
 			similarity = 0;
@@ -81,13 +69,12 @@ public class PAMClustering {
 				if (i == j)
 					continue;
 				similarity += calculateDistance(cluster.getDataCenterList().get(i), cluster.getDataCenterList().get(j));
-				if (similarity < bestSimilarity) {
-					bestSimilarity = similarity;
-					bestCenter = i;
-				}
+			}
+			if (similarity < bestSimilarity) {
+				bestSimilarity = similarity;
+				bestCenter = i;
 			}
 		}
-//		System.out.println(bestCenter);
 		return bestCenter;
 	}
 
@@ -150,7 +137,6 @@ public class PAMClustering {
 		String key;
 
 		for (int i = 0; i < numCluster; i++) {
-			Cluster cluster = new Cluster();
 			do {
 				key = keysAsArray.get(r.nextInt(keysAsArray.size()));
 			} while (this.centroidList.contains(key));
@@ -168,6 +154,13 @@ public class PAMClustering {
 
 		public void setDataCenterList(List<String> dataCenterList) {
 			this.dataCenterList = dataCenterList;
+		}
+
+		@Override
+		public String toString() {
+			String text = "";
+			text += this.dataCenterList + " ";
+			return text;
 		}
 
 	}
