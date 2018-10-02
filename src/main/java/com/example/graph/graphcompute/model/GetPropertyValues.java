@@ -6,6 +6,7 @@ import java.util.Properties;
 
 public class GetPropertyValues {
 	private String urlDC = ""; // algorithm to calculate for the latest
+	private String urlDCZone = ""; // url of location mapped to zones
 
 //	read the config files and populate the elements
 	public void readValues() {
@@ -23,6 +24,7 @@ public class GetPropertyValues {
 
 			// get the property value
 			urlDC = properties.getProperty("url-datacenter");
+			urlDCZone = properties.getProperty("url-dcZone");
 		} catch (Exception e) {
 			System.out.println("Exception: " + e);
 		}
@@ -34,6 +36,14 @@ public class GetPropertyValues {
 
 	public void setUrlDC(String urlDC) {
 		this.urlDC = urlDC;
+	}
+
+	public String getUrlDCZone() {
+		return urlDCZone;
+	}
+
+	public void setUrlDCZone(String urlDCZone) {
+		this.urlDCZone = urlDCZone;
 	}
 
 }

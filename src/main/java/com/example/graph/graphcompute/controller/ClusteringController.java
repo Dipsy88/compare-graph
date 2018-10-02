@@ -15,6 +15,7 @@ import com.example.graph.graphcompute.clustering.PAMClustering;
 import com.example.graph.graphcompute.db.model.DataCenter;
 import com.example.graph.graphcompute.db.model.Region;
 import com.example.graph.graphcompute.model.DataCent;
+import com.example.graph.graphcompute.model.LocationZone;
 import com.example.graph.graphcompute.model.TwoDataCenterValues;
 import com.example.graph.graphcompute.model.ValCount;
 import com.example.graph.graphcompute.model.Zone;
@@ -38,9 +39,7 @@ public class ClusteringController {
 	private Map<String, List<Double>> dataSetValuesMap = new HashMap<>(); // add latency to each dataset
 	// store all data center that have values
 	private List<String> dcList = new ArrayList<String>();
-	// dc1 mapped to dc2 with latency using distance metric (Kolmogorov–Smirnov
-	// statistic)
-	private Map<String, Map<String, Double>> dataSetToOtherValuesMap = new HashMap<>();
+
 	// zonemap with list of datacenters
 	private Map<String, List<String>> zoneDCMap = new HashMap<String, List<String>>();
 	// datacenter linked to each zone
@@ -48,7 +47,7 @@ public class ClusteringController {
 
 	public void run() {
 		Map<String, Map<String, Double>> twoDCMap = new HashMap<>();
-		twoDCMap = readDC();
+		twoDCMap = readDC(); // get request to read the latency, bandwidth and return in a form of 2d array
 
 		// do clustering
 		// 1) PAM clustering
@@ -112,16 +111,17 @@ public class ClusteringController {
 	}
 
 	// get request to read the latency, bandwidth and return in a form of 2d array
+	// with location id
 	public Map<String, Map<String, Double>> readDC() {
 		RestTemplate restTemplate = new RestTemplate();
 		// two data center name, their latency and bandwidth
 		TwoDataCenterValues[] twoDataCenterValuesArray;
-		// Send request with GET method and default Headers.
+		// Send request with GET method and default Headers
 		twoDataCenterValuesArray = restTemplate.getForObject(URL_DC, TwoDataCenterValues[].class);
-		// replace datacenter name with its location
+		// replace datacenter name with its id
 		// two data center name, their latency and bandwidth
 		TwoDataCenterValues[] twoDataCenterLocationArray;
-		twoDataCenterLocationArray = replaceDCNameWithLocation(twoDataCenterValuesArray);
+		twoDataCenterLocationArray = replaceDCNameWithID(twoDataCenterValuesArray);
 
 		// store in an array
 		return calculateLatency(twoDataCenterLocationArray);
@@ -164,7 +164,7 @@ public class ClusteringController {
 		return retMap;
 	}
 
-	// change datacenter name with its location
+	// change datacenter name with its location name
 	public TwoDataCenterValues[] replaceDCNameWithLocation(TwoDataCenterValues[] twoDataCenterValuesArray) {
 		for (TwoDataCenterValues twoDataCenterValues : twoDataCenterValuesArray) {
 			DataCenter dc1 = dataCenterRepository.findByName(twoDataCenterValues.getDc1());
@@ -179,6 +179,25 @@ public class ClusteringController {
 			if (region2.isPresent())
 				twoDataCenterValues.setDc2(region2.get().getLocation());
 		}
+		return twoDataCenterValuesArray;
+	}
+
+	// change datacenter name with location id
+	public TwoDataCenterValues[] replaceDCNameWithID(TwoDataCenterValues[] twoDataCenterValuesArray) {
+		for (TwoDataCenterValues twoDataCenterValues : twoDataCenterValuesArray) {
+			DataCenter dc1 = dataCenterRepository.findByName(twoDataCenterValues.getDc1());
+			Long id1 = dc1.getRegionId();
+			Optional<Region> region1 = regionRepository.findById(id1);
+			DataCenter dc2 = dataCenterRepository.findByName(twoDataCenterValues.getDc2());
+			long id2 = dc2.getRegionId();
+			Optional<Region> region2 = regionRepository.findById(id2);
+
+			if (region1.isPresent())
+				twoDataCenterValues.setDc1("" + region1.get().getId());
+			if (region2.isPresent())
+				twoDataCenterValues.setDc2("" + region2.get().getId());
+		}
+
 		return twoDataCenterValuesArray;
 	}
 
@@ -233,6 +252,19 @@ public class ClusteringController {
 		zone.setName(zoneName);
 		zone.setDcList(zoneDCMap.get(zoneName));
 		return zone;
+	}
+
+	// get a list of location with zone linked
+	public List<LocationZone> getLocZone() {
+		List<LocationZone> locZoneList = new ArrayList<LocationZone>();
+		for (Map.Entry<String, String> entry : dcZoneMap.entrySet()) {
+			LocationZone locationZone = new LocationZone();
+			locationZone.setId(entry.getKey());
+			locationZone.setZone(entry.getValue());
+
+			locZoneList.add(locationZone);
+		}
+		return locZoneList;
 	}
 
 	// cluster

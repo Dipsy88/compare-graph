@@ -1,4 +1,4 @@
-package com.example.graph.graphcompute.controller;
+package com.example.graph.graphcompute;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,17 +13,16 @@ import org.jgrapht.UndirectedGraph;
 import org.jgrapht.graph.SimpleWeightedGraph;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.client.RestTemplate;
 
+import com.example.graph.graphcompute.controller.GraphController;
 import com.example.graph.graphcompute.model.AtomVertex;
 import com.example.graph.graphcompute.model.BoundEdge;
 import com.example.graph.graphcompute.model.LocationZone;
 import com.example.graph.graphcompute.util.Jaccard;
 
-@Controller
-public class GraphController {
-	private String URL_DCZone;
+public class FindSimilarity {
+	private static final String URL_DCZONE = "http://localhost:8090/input/dc";
 
 	final private static Logger logger = LoggerFactory.getLogger(GraphController.class);
 	private static String[] list1 = { "singapore", "ws", "bs", "ds2", "ny", "ds1", "ohio" };
@@ -32,7 +31,18 @@ public class GraphController {
 	private static UndirectedGraph<AtomVertex, BoundEdge> structureGraph = new SimpleWeightedGraph<>(BoundEdge.class);
 	private static UndirectedGraph<AtomVertex, BoundEdge> structureGraph2 = new SimpleWeightedGraph<>(BoundEdge.class);
 
-	public void run() {
+	public static void main(String[] args) {
+		Map<String, String> locZoneMap = readLocZone();
+		List<UndirectedGraph<AtomVertex, BoundEdge>> structureGraphList = readGraph(locZoneMap);
+
+		for (int i = 0; i < structureGraphList.size(); i++) {
+			Set<Integer> fingerprints1 = getFingerprintSet(structureGraph);
+			for (int j = 0; j < structureGraphList.size(); j++) {
+
+			}
+
+		}
+
 		List<AtomVertex> vertices = new ArrayList<>();
 
 		for (String item : list1) {
@@ -117,26 +127,74 @@ public class GraphController {
 		}
 	}
 
-	public Map<String, String> readLocZone() {
+	// read graphs in some format and store
+	public static List<UndirectedGraph<AtomVertex, BoundEdge>> readGraph(Map<String, String> locZoneMap) {
+		List<UndirectedGraph<AtomVertex, BoundEdge>> structureGraphList = new ArrayList<>();
+
+		// first graph
+		String[] graph1 = { "singapore", "ws", "bs", "ds2", "ny", "ds1", "ohio" };
+		graph1 = modifyGraphLocation(graph1, locZoneMap);
+		UndirectedGraph<AtomVertex, BoundEdge> structureGraph = new SimpleWeightedGraph<>(BoundEdge.class);
+		List<AtomVertex> vertices = new ArrayList<>();
+		for (String item : graph1) {
+			AtomVertex atomVertex = new AtomVertex(item);
+			vertices.add(atomVertex);
+			structureGraph.addVertex(atomVertex);
+		}
+		structureGraph.addEdge(vertices.get(0), vertices.get(1), new BoundEdge(0));
+		structureGraph.addEdge(vertices.get(1), vertices.get(2), new BoundEdge(0));
+		structureGraph.addEdge(vertices.get(2), vertices.get(3), new BoundEdge(0));
+		structureGraph.addEdge(vertices.get(3), vertices.get(4), new BoundEdge(0));
+		structureGraph.addEdge(vertices.get(1), vertices.get(5), new BoundEdge(0));
+		structureGraph.addEdge(vertices.get(5), vertices.get(6), new BoundEdge(0));
+
+		structureGraphList.add(structureGraph);
+
+		// second graph
+		String[] graph2 = { "ohio", "ds1", "nydd", "ds2", "singapore", "ws", "bs" };
+		graph2 = modifyGraphLocation(graph1, locZoneMap);
+		UndirectedGraph<AtomVertex, BoundEdge> structureGraph2 = new SimpleWeightedGraph<>(BoundEdge.class);
+		vertices = new ArrayList<>();
+		for (String item : graph2) {
+			AtomVertex atomVertex = new AtomVertex(item);
+			vertices.add(atomVertex);
+			structureGraph2.addVertex(atomVertex);
+		}
+
+		structureGraph2.addEdge(vertices.get(0), vertices.get(1), new BoundEdge(0));
+		structureGraph2.addEdge(vertices.get(2), vertices.get(3), new BoundEdge(0));
+		structureGraph2.addEdge(vertices.get(4), vertices.get(5), new BoundEdge(0));
+		structureGraph2.addEdge(vertices.get(5), vertices.get(6), new BoundEdge(0));
+		structureGraph2.addEdge(vertices.get(5), vertices.get(1), new BoundEdge(0));
+		structureGraph2.addEdge(vertices.get(3), vertices.get(6), new BoundEdge(0));
+
+		structureGraphList.add(structureGraph2);
+		return structureGraphList;
+	}
+
+	public static String[] modifyGraphLocation(String[] graph, Map<String, String> locZoneMap) {
+		String[] retGraph = new String[graph.length];
+		for (int i = 0; i < graph.length; i++) {
+			String val = graph[i];
+			if (locZoneMap.containsKey(val))
+				val = locZoneMap.get(val);
+			retGraph[i] = val;
+		}
+		return retGraph;
+	}
+
+	public static Map<String, String> readLocZone() {
 		Map<String, String> locZoneMap = new HashMap<String, String>();
 
 		RestTemplate restTemplate = new RestTemplate();
 		// Send request with GET method and default Headers
 		LocationZone[] locationZoneArray;
-		locationZoneArray = restTemplate.getForObject(URL_DCZone, LocationZone[].class);
+		locationZoneArray = restTemplate.getForObject(URL_DCZONE, LocationZone[].class);
 
 		for (LocationZone locationZone : locationZoneArray)
 			locZoneMap.put(locationZone.getId(), locationZone.getZone());
 
 		return locZoneMap;
-	}
-
-	public String getURL_DCZone() {
-		return URL_DCZone;
-	}
-
-	public void setURL_DCZone(String uRL_DCZone) {
-		URL_DCZone = uRL_DCZone;
 	}
 
 }
