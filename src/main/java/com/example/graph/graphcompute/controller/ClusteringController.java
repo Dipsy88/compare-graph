@@ -51,8 +51,8 @@ public class ClusteringController {
 
 		// do clustering
 		// 1) PAM clustering
-		List<PAMClustering.Cluster> clusterPAM = cluster(twoDCMap);
-		System.out.println(clusterPAM);
+//		List<PAMClustering.Cluster> clusterPAM = cluster(twoDCMap);
+//		System.out.println(clusterPAM);
 
 		// 2) affinity propagation
 		// first convert to 2D matrix
@@ -70,7 +70,6 @@ public class ClusteringController {
 			System.out.println(text);
 		}
 
-//		List<PAMClustering.Cluster> clusterList = cluster(this.dataSetToOtherValuesMap);
 //		findZone(clusterPAM); // store maps in zoneDCMap and dcZoneMap
 		findZone(clusterIdList, dataPoints);
 
