@@ -20,25 +20,23 @@ import com.example.graph.graphcompute.model.LocationZone;
 import com.example.graph.graphcompute.util.Jaccard;
 
 // need to look at the hashmap storing graphs
-public class FindSimilarity {
+public class FindSimilarity_copy {
 	private static final String URL_DCZONE = "http://localhost:8090/input/dc";
-//	private static String key = "";
-	private static Map<String, Set<Integer>> fingerPrintMap = new HashMap<>();
-	private static Map<UndirectedGraph<AtomVertex, BoundEdge>, Set<Integer>> currentFingerPrintMap = new HashMap<>();
+	private static String key = "";
 
 	public static void main(String[] args) {
 		Map<String, String> locZoneMap = readLocZone();
-		currentFingerPrintMap = new HashMap<>();
 		List<UndirectedGraph<AtomVertex, BoundEdge>> structureGraphList = readGraph(locZoneMap);
 
 		// compute similarity between all graph pairs
 		for (int i = 0; i < structureGraphList.size(); i++) {
-			Set<Integer> fingerprints1 = currentFingerPrintMap.get(structureGraphList.get(i));
+			Set<Integer> fingerprints1 = getFingerprintSet(structureGraphList.get(i));
 			for (int j = i + 1; j < structureGraphList.size(); j++) {
-				Set<Integer> fingerprints2 = currentFingerPrintMap.get(structureGraphList.get(j));
+				Set<Integer> fingerprints2 = getFingerprintSet(structureGraphList.get(j));
 				double similarity = Jaccard.calculateSimilarity(fingerprints1, fingerprints2) * 100.;
 				System.out.println("Similarity between Graph" + i + " and Graph" + j + " is " + similarity + "%");
 			}
+
 		}
 	}
 
@@ -75,8 +73,9 @@ public class FindSimilarity {
 	// read graphs in some format and store
 	public static List<UndirectedGraph<AtomVertex, BoundEdge>> readGraph(Map<String, String> locZoneMap) {
 		List<UndirectedGraph<AtomVertex, BoundEdge>> structureGraphList = new ArrayList<>();
-		// first graph
+		key = "";
 		List<String> keyList = new ArrayList<String>();
+		// first graph
 //		String[] graph1 = { "singapore", "ws", "bs", "ds2", "ny", "ds1", "ohio" };
 		String[] graph1 = { "11", "ws", "bs", "ds2", "ny", "ds1", "ohio" };
 		for (String item : graph1)
@@ -107,26 +106,9 @@ public class FindSimilarity {
 		keyList.add(sortTwoItems(graph1_org[5], graph1_org[6]));
 		Collections.sort(keyList);
 
-		String key = "";
-		Set<Integer> fingerprints1;
-		for (String item : keyList)
-			key += item;
-		if (fingerPrintMap.containsKey(key))
-			fingerprints1 = fingerPrintMap.get(key);
-		else {
-			fingerprints1 = getFingerprintSet(structureGraph);
-			fingerPrintMap.put(key, fingerprints1);
-		}
-		currentFingerPrintMap.put(structureGraph, fingerprints1);
-
 		// second graph
-		keyList = new ArrayList<String>();
 //		String[] graph2 = { "ohio", "ds1", "ny", "ds2", "singapore", "ws", "bs" };
-		String[] graph2 = { "ohio", "ds1", "ny", "ds2", "23", "ws", "bs" };
-		for (String item : graph2)
-			keyList.add(item);
-		String[] graph2_org = graph2.clone();
-
+		String[] graph2 = { "ohio", "ds1", "ny", "ds2", "22", "ws", "bs" };
 		graph2 = modifyGraphLocation(graph2, locZoneMap);
 		UndirectedGraph<AtomVertex, BoundEdge> structureGraph2 = new SimpleWeightedGraph<>(BoundEdge.class);
 		vertices = new ArrayList<>();
@@ -135,34 +117,15 @@ public class FindSimilarity {
 			vertices.add(atomVertex);
 			structureGraph2.addVertex(atomVertex);
 		}
+
 		structureGraph2.addEdge(vertices.get(0), vertices.get(1), new BoundEdge(0));
 		structureGraph2.addEdge(vertices.get(2), vertices.get(3), new BoundEdge(0));
 		structureGraph2.addEdge(vertices.get(4), vertices.get(5), new BoundEdge(0));
 		structureGraph2.addEdge(vertices.get(5), vertices.get(6), new BoundEdge(0));
 		structureGraph2.addEdge(vertices.get(5), vertices.get(1), new BoundEdge(0));
 		structureGraph2.addEdge(vertices.get(3), vertices.get(6), new BoundEdge(0));
+
 		structureGraphList.add(structureGraph2);
-
-		keyList.add(sortTwoItems(graph2_org[0], graph2_org[1]));
-		keyList.add(sortTwoItems(graph2_org[2], graph2_org[3]));
-		keyList.add(sortTwoItems(graph2_org[4], graph2_org[5]));
-		keyList.add(sortTwoItems(graph2_org[5], graph2_org[6]));
-		keyList.add(sortTwoItems(graph2_org[5], graph2_org[1]));
-		keyList.add(sortTwoItems(graph2_org[3], graph2_org[6]));
-		Collections.sort(keyList);
-
-		key = "";
-		Set<Integer> fingerprints2;
-		for (String item : keyList)
-			key += item;
-		if (fingerPrintMap.containsKey(key))
-			fingerprints2 = fingerPrintMap.get(key);
-		else {
-			fingerprints2 = getFingerprintSet(structureGraph2);
-			fingerPrintMap.put(key, fingerprints2);
-		}
-		currentFingerPrintMap.put(structureGraph2, fingerprints2);
-
 		return structureGraphList;
 	}
 

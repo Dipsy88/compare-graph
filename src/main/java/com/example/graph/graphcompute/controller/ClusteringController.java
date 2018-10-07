@@ -52,8 +52,7 @@ public class ClusteringController {
 		// do clustering
 		// 1) PAM clustering
 //		List<PAMClustering.Cluster> clusterPAM = cluster(twoDCMap);
-//		System.out.println(clusterPAM);
-
+//		print(twoDCMap, clusterPAM);
 		// 2) affinity propagation
 		// first convert to 2D matrix
 		List<String> dataPoints = getListDP(twoDCMap);
@@ -61,19 +60,72 @@ public class ClusteringController {
 		AffinityPropagation affinityPropagation = new AffinityPropagation(matrix);
 		List<AffinityPropagation.ClusterIds> clusterIdList = affinityPropagation.run();
 
-		System.out.println("Affinity clustering");
+//		findZone(clusterPAM); // store maps in zoneDCMap and dcZoneMap
+		findZone(clusterIdList, dataPoints);
+		print(twoDCMap, clusterIdList, dataPoints);
+		System.out.println("clustered");
+	}
+
+	// print for PAM clustering
+	public void print(Map<String, Map<String, Double>> twoDCMap, List<PAMClustering.Cluster> clusterPAM) {
+		for (PAMClustering.Cluster clusterId : clusterPAM) {
+			System.out.println(clusterId);
+			for (int i = 0; i < clusterId.getDataCenterList().size(); i++) {
+				String dc1 = clusterId.getDataCenterList().get(i);
+				for (int j = i + 1; j < clusterId.getDataCenterList().size(); j++) {
+					double distance = 0;
+					String dc2 = clusterId.getDataCenterList().get(j);
+					if (twoDCMap.containsKey(dc1)) {
+						if (twoDCMap.get(dc1).containsKey(dc2))
+							distance = twoDCMap.get(dc1).get(dc2);
+					}
+					if (distance == 0.) {
+						if (twoDCMap.containsKey(dc2)) {
+							if (twoDCMap.get(dc2).containsKey(dc1))
+								distance = twoDCMap.get(dc2).get(dc1);
+						}
+
+					}
+					System.out.println("Distance between " + dc1 + " and " + dc2 + " is " + distance);
+				}
+			}
+		}
+	}
+
+	// print for Affinity propagation clustering
+	public void print(Map<String, Map<String, Double>> twoDCMap, List<AffinityPropagation.ClusterIds> clusterIdList,
+			List<String> dataPoints) {
 		for (AffinityPropagation.ClusterIds clusterId : clusterIdList) {
 			String text = "";
 			for (Integer item : clusterId.getDataCenterIdList()) {
 				text += dataPoints.get(item) + " ";
 			}
 			System.out.println(text);
+
 		}
+		for (AffinityPropagation.ClusterIds clusterId : clusterIdList) {
+			System.out.println(clusterId);
+			for (int i = 0; i < clusterId.getDataCenterIdList().size(); i++) {
+				String dc1 = dataPoints.get(clusterId.getDataCenterIdList().get(i));
+				for (int j = i + 1; j < clusterId.getDataCenterIdList().size(); j++) {
+					double distance = 0;
+					String dc2 = dataPoints.get(clusterId.getDataCenterIdList().get(j));
+					if (twoDCMap.containsKey(dc1)) {
+						if (twoDCMap.get(dc1).containsKey(dc2))
+							distance = twoDCMap.get(dc1).get(dc2);
+					}
+					if (distance == 0.) {
+						if (twoDCMap.containsKey(dc2)) {
+							if (twoDCMap.get(dc2).containsKey(dc1))
+								distance = twoDCMap.get(dc2).get(dc1);
+						}
 
-//		findZone(clusterPAM); // store maps in zoneDCMap and dcZoneMap
-		findZone(clusterIdList, dataPoints);
+					}
+					System.out.println("Distance between " + dc1 + " and " + dc2 + " is " + distance);
+				}
+			}
 
-		System.out.println("clustered");
+		}
 	}
 
 	// put data in a two dimensional matrix
@@ -93,8 +145,9 @@ public class ClusteringController {
 				else {
 					if (dataSetMap.get(dataPoints.get(j)).containsKey(dataPoints.get(i)))
 						ret[i][j] = dataSetMap.get(dataPoints.get(j)).get(dataPoints.get(i));
-					else
+					else // connection still does not exist
 						ret[i][j] = -1;
+
 				}
 			}
 		}
